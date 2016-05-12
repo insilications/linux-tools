@@ -7,8 +7,6 @@ Url:            http://www.kernel.org/
 Group:          kernel
 Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.5.4.tar.xz
 
-%define kversion %{version}-%{release}.native
-
 BuildRequires:  bash >= 2.03
 BuildRequires:  bc
 # For bfd support in perf/trace
@@ -87,19 +85,17 @@ InstallTools() {
 InstallTools
 
 # Move bash-completion
-mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
-mv %{buildroot}%{_sysconfdir}/bash_completion.d/perf %{buildroot}%{_datadir}/bash-completion/completions/perf
-rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
-rmdir %{buildroot}%{_sysconfdir}
-
-
+mkdir -p %{buildroot}/usr/share/bash-completion/completions
+mv %{buildroot}/etc/bash_completion.d/perf %{buildroot}/usr/share/bash-completion/completions/perf
+rmdir %{buildroot}/etc/bash_completion.d
+rmdir %{buildroot}/etc
 
 %files
-%{_bindir}/trace
-%{_bindir}/perf
+/usr/bin/trace
+/usr/bin/perf
 /usr/libexec/perf-core
 /usr/lib64/traceevent/plugins/
-%{_datadir}/bash-completion/completions/*
+/usr/share/bash-completion/completions/*
 /usr/bin/turbostat
 /usr/share/man/man8/turbostat.8
 /usr/share/doc/perf-tip/tips.txt
