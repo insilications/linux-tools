@@ -1,6 +1,6 @@
 Name:           linux-tools
 Version:        4.6
-Release:        211
+Release:        212
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
@@ -37,6 +37,14 @@ BuildRequires:  docbook-xml
 %description
 The Linux kernel tools perf/trace.
 
+%package hyperv
+License:        GPL-2.0
+Summary:        The Linux kernel hyperv daemon files
+Group:          kernel
+
+%description hyperv
+Linux kernel hyperv daemon files
+
 %prep
 %setup -q -n linux-4.6
 
@@ -58,7 +66,14 @@ BuildTools() {
     popd
 }
 
+BuildHyperVDaemons() {
+    pushd tools/hv
+    make
+    popd
+}
+
 BuildTools
+BuildHyperVDaemons
 
 %install
 
@@ -75,7 +90,17 @@ InstallTools() {
     popd
 }
 
+InstallHyperVDaemons() {
+    pushd tools/hv
+    mkdir -p %{buildroot}/usr/bin
+    cp hv_fcopy_daemon %{buildroot}/usr/bin
+    cp hv_kvp_daemon %{buildroot}/usr/bin
+    cp hv_vss_daemon %{buildroot}/usr/bin
+    popd
+}
+
 InstallTools
+InstallHyperVDaemons
 
 # Move bash-completion
 mkdir -p %{buildroot}/usr/share/bash-completion/completions
@@ -93,3 +118,8 @@ rmdir %{buildroot}/etc
 /usr/share/man/man8/turbostat.8
 /usr/share/man/man1
 /usr/share/doc/perf-tip/tips.txt
+
+%files hyperv
+/usr/bin/hv_fcopy_daemon
+/usr/bin/hv_kvp_daemon
+/usr/bin/hv_vss_daemon
