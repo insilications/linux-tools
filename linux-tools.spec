@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.6
+Version:        4.7
 Release:        212
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.7.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -46,7 +46,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.6
+%setup -q -n linux-4.7
 
 %build
 export AR=gcc-ar
@@ -62,6 +62,9 @@ BuildTools() {
     make -s %{?sparse_mflags}
     popd
     pushd tools/power/x86/turbostat
+    make
+    popd
+    pushd tools/power/x86/x86_energy_perf_policy
     make
     popd
 }
@@ -86,6 +89,13 @@ InstallTools() {
 	popd
     popd
     pushd tools/power/x86/turbostat
+    %make_install prefix=/usr
+    popd
+    pushd tools/kvm/kvm_stat
+	make
+	make INSTALL_ROOT=%{buildroot} install
+    popd
+    pushd tools/power/x86/x86_energy_perf_policy
     %make_install prefix=/usr
     popd
 }
@@ -118,6 +128,9 @@ rmdir %{buildroot}/etc
 /usr/share/man/man8/turbostat.8
 /usr/share/man/man1
 /usr/share/doc/perf-tip/tips.txt
+/usr/bin/kvm_stat
+/usr/bin/x86_energy_perf_policy
+/usr/share/man/man8/x86_energy_perf_policy.8
 
 %files hyperv
 /usr/bin/hv_fcopy_daemon
