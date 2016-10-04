@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.7
+Version:        4.8
 Release:        213
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.7.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.8.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -46,7 +46,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.7
+%setup -q -n linux-4.8
 
 %build
 export AR=gcc-ar
