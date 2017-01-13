@@ -1,6 +1,6 @@
 Name:           linux-tools
 Version:        4.9
-Release:        213
+Release:        214
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
@@ -32,6 +32,7 @@ BuildRequires:  util-linux
 BuildRequires:  libxml2-dev
 BuildRequires:  libxslt
 BuildRequires:  docbook-xml
+BuildRequires:  audit-dev
 
 
 %description
@@ -131,6 +132,7 @@ rmdir %{buildroot}/etc
 /usr/bin/kvm_stat
 /usr/bin/x86_energy_perf_policy
 /usr/share/man/man8/x86_energy_perf_policy.8
+/usr/share/perf-core/strace/groups/file
 
 %files hyperv
 /usr/bin/hv_fcopy_daemon
