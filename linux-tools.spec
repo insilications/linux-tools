@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.10
+Version:        4.11
 Release:        221
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.10.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.11.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -47,7 +47,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.10
+%setup -q -n linux-4.11
 
 %build
 export AR=gcc-ar
