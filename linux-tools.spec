@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.12
+Version:        4.13
 Release:        230
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.12.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.13.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -33,7 +33,7 @@ BuildRequires:  libxml2-dev
 BuildRequires:  libxslt
 BuildRequires:  docbook-xml
 BuildRequires:  audit-dev
-
+BuildRequires:  python3-dev
 
 %description
 The Linux kernel tools perf/trace.
@@ -47,13 +47,13 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.12
+%setup -q -n linux-4.13
 
 %build
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-
+unset LD_AS_NEEDED
 BuildTools() {
     pushd tools/perf
     sed -i '/# Define NO_GTK2/a NO_GTK2 = 1' Makefile.perf
