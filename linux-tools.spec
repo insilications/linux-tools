@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.13
+Version:        4.14
 Release:        231
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.13.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -47,7 +47,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.13
+%setup -q -n linux-4.14
 
 %build
 export AR=gcc-ar
@@ -86,7 +86,7 @@ InstallTools() {
     %make_install prefix=/usr
 	pushd Documentation
 	make man
-	make DESTDIR=%{buildroot} install
+	make DESTDIR=%{buildroot} mandir=/usr/share/man install
 	popd
     popd
     pushd tools/power/x86/turbostat
@@ -118,6 +118,8 @@ mkdir -p %{buildroot}/usr/share/bash-completion/completions
 mv %{buildroot}/etc/bash_completion.d/perf %{buildroot}/usr/share/bash-completion/completions/perf
 rmdir %{buildroot}/etc/bash_completion.d
 rmdir %{buildroot}/etc
+mkdir -p %{buildroot}/usr/share
+
 
 %files
 /usr/bin/trace
