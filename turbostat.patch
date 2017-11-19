@@ -1,0 +1,44 @@
+--- linux-4.14/tools/power/x86/turbostat/turbostat.c.org	2017-11-19 16:29:02.332365225 +0000
++++ linux-4.14/tools/power/x86/turbostat/turbostat.c	2017-11-19 16:30:20.112552799 +0000
+@@ -831,15 +831,22 @@
+ 		outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), 100.0 * t->mperf/tsc);
+ 
+ 	if (DO_BIC(BIC_Bzy_MHz)) {
+-		if (has_base_hz)
++		if (100.0 * t->mperf/tsc < 0.1) {
++			outp += sprintf(outp, "%s    ", (printed++ ? delim : ""));
++		} else if (has_base_hz)
+ 			outp += sprintf(outp, "%s%.0f", (printed++ ? delim : ""), base_hz / units * t->aperf / t->mperf);
+ 		else
+ 			outp += sprintf(outp, "%s%.0f", (printed++ ? delim : ""),
+ 				tsc / units * t->aperf / t->mperf / interval_float);
+ 	}
+ 
+-	if (DO_BIC(BIC_TSC_MHz))
+-		outp += sprintf(outp, "%s%.0f", (printed++ ? delim : ""), 1.0 * t->tsc/units/interval_float);
++	if (DO_BIC(BIC_TSC_MHz)) {
++		if (100.0 * t->mperf/tsc < 0.1) {
++			outp += sprintf(outp, "%s    ", (printed++ ? delim : ""));
++		} else {
++			outp += sprintf(outp, "%s%.0f", (printed++ ? delim : ""), 1.0 * t->tsc/units/interval_float);
++		}
++	}
+ 
+ 	/* IRQ */
+ 	if (DO_BIC(BIC_IRQ)) {
+@@ -850,8 +857,13 @@
+ 	}
+ 
+ 	/* SMI */
+-	if (DO_BIC(BIC_SMI))
+-		outp += sprintf(outp, "%s%d", (printed++ ? delim : ""), t->smi_count);
++	if (DO_BIC(BIC_SMI)) {
++		if (t->smi_count) {
++			outp += sprintf(outp, "%s%d", (printed++ ? delim : ""), t->smi_count);
++		} else {
++			outp += sprintf(outp, "%s ", (printed++ ? delim : ""));
++		}
++	}
+ 
+ 	/* Added counters */
+ 	for (i = 0, mp = sys.tp; mp; i++, mp = mp->next) {

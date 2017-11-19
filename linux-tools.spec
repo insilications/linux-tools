@@ -1,6 +1,6 @@
 Name:           linux-tools
 Version:        4.14
-Release:        231
+Release:        232
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
@@ -35,6 +35,8 @@ BuildRequires:  docbook-xml
 BuildRequires:  audit-dev
 BuildRequires:  python3-dev
 
+Patch1: turbostat.patch
+
 %description
 The Linux kernel tools perf/trace.
 
@@ -48,6 +50,7 @@ Linux kernel hyperv daemon files
 
 %prep
 %setup -q -n linux-4.14
+%patch1 -p1
 
 %build
 export AR=gcc-ar
