@@ -1,7 +1,23 @@
 --- linux-4.14/tools/power/x86/turbostat/turbostat.c.org	2017-11-19 16:29:02.332365225 +0000
-+++ linux-4.14/tools/power/x86/turbostat/turbostat.c	2017-11-19 16:30:20.112552799 +0000
-@@ -831,15 +831,22 @@
- 		outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), 100.0 * t->mperf/tsc);
++++ linux-4.14/tools/power/x86/turbostat/turbostat.c	2017-11-19 16:46:14.932908012 +0000
+@@ -823,35 +823,55 @@
+ 			outp += sprintf(outp, "%s%d", (printed++ ? delim : ""), t->cpu_id);
+ 	}
+ 
+-	if (DO_BIC(BIC_Avg_MHz))
+-		outp += sprintf(outp, "%s%.0f", (printed++ ? delim : ""),
+-			1.0 / units * t->aperf / interval_float);
++	if (DO_BIC(BIC_Avg_MHz)) {
++		if (100.0 * t->mperf/tsc > 0.1) 
++			outp += sprintf(outp, "%s%.0f", (printed++ ? delim : ""),
++				1.0 / units * t->aperf / interval_float);
++		else
++			outp += sprintf(outp, "%s    ", (printed++ ? delim : ""));
++	}
+ 
+ 	if (DO_BIC(BIC_Busy))
+-		outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), 100.0 * t->mperf/tsc);
++		outp += sprintf(outp, "%s%6.2f", (printed++ ? delim : ""), 100.0 * t->mperf/tsc);
  
  	if (DO_BIC(BIC_Bzy_MHz)) {
 -		if (has_base_hz)
@@ -26,7 +42,16 @@
  
  	/* IRQ */
  	if (DO_BIC(BIC_IRQ)) {
-@@ -850,8 +857,13 @@
+ 		if (sums_need_wide_columns)
+ 			outp += sprintf(outp, "%s%8lld", (printed++ ? delim : ""), t->irq_count);
+-		else
+-			outp += sprintf(outp, "%s%lld", (printed++ ? delim : ""), t->irq_count);
++		else {
++			if (t->irq_count > 3) 
++				outp += sprintf(outp, "%s%4lld", (printed++ ? delim : ""), t->irq_count);
++			else
++				outp += sprintf(outp, "%s    ", (printed++ ? delim : ""));
++		}
  	}
  
  	/* SMI */
@@ -42,3 +67,40 @@
  
  	/* Added counters */
  	for (i = 0, mp = sys.tp; mp; i++, mp = mp->next) {
+@@ -863,13 +883,17 @@
+ 		} else if (mp->format == FORMAT_DELTA) {
+ 			if ((mp->type == COUNTER_ITEMS) && sums_need_wide_columns)
+ 				outp += sprintf(outp, "%s%8lld", (printed++ ? delim : ""), t->counter[i]);
+-			else
+-				outp += sprintf(outp, "%s%lld", (printed++ ? delim : ""), t->counter[i]);
++			else {
++				if (t->counter[i]) 
++					outp += sprintf(outp, "%s%4lld", (printed++ ? delim : ""), t->counter[i]);
++				else
++					outp += sprintf(outp, "%s    ", (printed++ ? delim : ""));
++			}
+ 		} else if (mp->format == FORMAT_PERCENT) {
+ 			if (mp->type == COUNTER_USEC)
+-				outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), t->counter[i]/interval_float/10000);
++				outp += sprintf(outp, "%s%6.2f", (printed++ ? delim : ""), t->counter[i]/interval_float/10000);
+ 			else
+-				outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), 100.0 * t->counter[i]/tsc);
++				outp += sprintf(outp, "%s%6.2f", (printed++ ? delim : ""), 100.0 * t->counter[i]/tsc);
+ 		}
+ 	}
+ 
+@@ -883,11 +907,11 @@
+ 		goto done;
+ 
+ 	if (DO_BIC(BIC_CPU_c3) && !do_slm_cstates && !do_knl_cstates)
+-		outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), 100.0 * c->c3/tsc);
++		outp += sprintf(outp, "%s%6.2f", (printed++ ? delim : ""), 100.0 * c->c3/tsc);
+ 	if (DO_BIC(BIC_CPU_c6))
+-		outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), 100.0 * c->c6/tsc);
++		outp += sprintf(outp, "%s%6.2f", (printed++ ? delim : ""), 100.0 * c->c6/tsc);
+ 	if (DO_BIC(BIC_CPU_c7))
+-		outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), 100.0 * c->c7/tsc);
++		outp += sprintf(outp, "%s%6.2f", (printed++ ? delim : ""), 100.0 * c->c7/tsc);
+ 
+ 	/* Mod%c6 */
+ 	if (DO_BIC(BIC_Mod_c6))
