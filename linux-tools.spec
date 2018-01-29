@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.14
+Version:        4.15
 Release:        234
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.15.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -49,7 +49,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.14
+%setup -q -n linux-4.15
 %patch1 -p1
 
 %build
