@@ -1,6 +1,6 @@
 Name:           linux-tools
 Version:        4.15
-Release:        237
+Release:        238
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
@@ -36,7 +36,7 @@ BuildRequires:  audit-dev
 BuildRequires:  python3-dev
 
 Patch1: turbostat.patch
-
+Patch2: vmlinux-location.patch
 %description
 The Linux kernel tools perf/trace.
 
@@ -51,6 +51,7 @@ Linux kernel hyperv daemon files
 %prep
 %setup -q -n linux-4.15
 %patch1 -p1
+%patch2 -p1
 
 %build
 export AR=gcc-ar
