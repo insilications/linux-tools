@@ -1,0 +1,34 @@
+From 1f97e01a385703c18ceb853c894ea09736161233 Mon Sep 17 00:00:00 2001
+From: Cole Robinson <crobinso@redhat.com>
+Date: Fri, 23 Mar 2018 18:07:18 -0400
+Subject: [PATCH 3/3] tools/kvm_stat: Remove unused function
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Unused since added in 18e8f4100
+
+Signed-off-by: Cole Robinson <crobinso@redhat.com>
+Reviewed-and-tested-by: Stefan Raspl <stefan.raspl@linux.vnet.ibm.com>
+Signed-off-by: Radim Krčmář <rkrcmar@redhat.com>
+---
+ tools/kvm/kvm_stat/kvm_stat | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/tools/kvm/kvm_stat/kvm_stat b/tools/kvm/kvm_stat/kvm_stat
+index 651b7f08bb2c..56c4b3f8a01b 100755
+--- a/tools/kvm/kvm_stat/kvm_stat
++++ b/tools/kvm/kvm_stat/kvm_stat
+@@ -1121,9 +1121,6 @@ class Tui(object):
+         self.screen.refresh()
+ 
+     def _refresh_body(self, sleeptime):
+-        def is_child_field(field):
+-            return field.find('(') != -1
+-
+         def insert_child(sorted_items, child, values, parent):
+             num = len(sorted_items)
+             for i in range(0, num):
+-- 
+2.17.1
+

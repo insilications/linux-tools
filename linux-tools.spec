@@ -38,6 +38,9 @@ BuildRequires:  python3-dev
 Patch1: turbostat.patch
 Patch2: vmlinux-location.patch
 Patch3: werror.patch
+Patch4: 0001-tools-kvm_stat-Fix-python3-syntax.patch
+Patch5: 0002-tools-kvm_stat-Don-t-use-deprecated-file.patch
+Patch6: 0003-tools-kvm_stat-Remove-unused-function.patch
 
 %description
 The Linux kernel tools perf/trace.
@@ -55,6 +58,9 @@ Linux kernel hyperv daemon files
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 export AR=gcc-ar
