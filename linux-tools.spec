@@ -127,6 +127,7 @@ rmdir %{buildroot}/etc/bash_completion.d
 rmdir %{buildroot}/etc
 mkdir -p %{buildroot}/usr/share
 
+chmod 0644 %{buildroot}/usr/share/man/man8/*
 
 %files
 /usr/bin/trace
