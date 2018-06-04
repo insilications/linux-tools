@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.16
+Version:        4.17
 Release:        247
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.16.11.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -38,9 +38,6 @@ BuildRequires:  python3-dev
 Patch1: turbostat.patch
 Patch2: vmlinux-location.patch
 Patch3: werror.patch
-Patch4: 0001-tools-kvm_stat-Fix-python3-syntax.patch
-Patch5: 0002-tools-kvm_stat-Don-t-use-deprecated-file.patch
-Patch6: 0003-tools-kvm_stat-Remove-unused-function.patch
 
 %description
 The Linux kernel tools perf/trace.
@@ -54,13 +51,10 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.16.11
+%setup -q -n linux-4.17
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 %build
 export AR=gcc-ar
