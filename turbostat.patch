@@ -100,18 +100,3 @@
  		}
  	}
  
-@@ -883,11 +915,11 @@
- 		goto done;
- 
- 	if (DO_BIC(BIC_CPU_c3) && !do_slm_cstates && !do_knl_cstates)
--		outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), 100.0 * c->c3/tsc);
-+		outp += sprintf(outp, "%s%6.2f", (printed++ ? delim : ""), 100.0 * c->c3/tsc);
- 	if (DO_BIC(BIC_CPU_c6))
--		outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), 100.0 * c->c6/tsc);
-+		outp += sprintf(outp, "%s%6.2f", (printed++ ? delim : ""), 100.0 * c->c6/tsc);
- 	if (DO_BIC(BIC_CPU_c7))
--		outp += sprintf(outp, "%s%.2f", (printed++ ? delim : ""), 100.0 * c->c7/tsc);
-+		outp += sprintf(outp, "%s%6.2f", (printed++ ? delim : ""), 100.0 * c->c7/tsc);
- 
- 	/* Mod%c6 */
- 	if (DO_BIC(BIC_Mod_c6))

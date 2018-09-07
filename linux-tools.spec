@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.17
+Version:        4.18
 Release:        250
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.17.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -21,6 +21,7 @@ BuildRequires:  ncurses-dev
 BuildRequires:  binutils-dev
 BuildRequires:  slang-dev
 BuildRequires:  libunwind-dev
+BuildRequires:  libunwind-dev32
 BuildRequires:  python-dev
 BuildRequires:  zlib-dev
 BuildRequires:  xz-dev
@@ -51,7 +52,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.17
+%setup -q -n linux-4.18
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -67,6 +68,9 @@ BuildTools() {
     # TODO: Fix me
     # error message: ld: XXX.o: plugin needed to handle lto object
     sed -i '/# Define NO_LIBPYTHON/a NO_LIBPYTHON = 1' Makefile.perf
+    
+    sed -i '/# Define NO_DEMANGLE if/a NO_DEMANGLE = 1' Makefile.perf
+
     make -s %{?sparse_mflags}
     popd
     pushd tools/power/x86/turbostat
@@ -142,6 +146,9 @@ chmod 0644 %{buildroot}/usr/share/man/man8/*
 /usr/bin/kvm_stat
 /usr/bin/x86_energy_perf_policy
 /usr/share/man/man8/x86_energy_perf_policy.8
+/usr/lib/examples/perf/bpf/5sec.c
+/usr/lib/examples/perf/bpf/empty.c
+/usr/lib/include/perf/bpf/bpf.h
 /usr/share/perf-core/strace/groups/file
 
 %files hyperv
