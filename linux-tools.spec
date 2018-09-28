@@ -1,6 +1,6 @@
 Name:           linux-tools
 Version:        4.18
-Release:        266
+Release:        267
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
@@ -69,7 +69,7 @@ BuildTools() {
     # error message: ld: XXX.o: plugin needed to handle lto object
     sed -i '/# Define NO_LIBPYTHON/a NO_LIBPYTHON = 1' Makefile.perf
     
-    sed -i '/# Define NO_DEMANGLE if/a NO_DEMANGLE = 1' Makefile.perf
+    #sed -i '/# Define NO_DEMANGLE if/a NO_DEMANGLE = 1' Makefile.perf
 
     make -s %{?sparse_mflags}
     popd
