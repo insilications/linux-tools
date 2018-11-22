@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.18
+Version:        4.19
 Release:        280
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.18.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -35,6 +35,7 @@ BuildRequires:  libxslt
 BuildRequires:  docbook-xml
 BuildRequires:  audit-dev
 BuildRequires:  python3-dev
+BuildRequires:  babeltrace-dev
 
 Patch1: turbostat.patch
 Patch2: vmlinux-location.patch
@@ -52,7 +53,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.18
+%setup -q -n linux-4.19
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -146,10 +147,14 @@ chmod 0644 %{buildroot}/usr/share/man/man8/*
 /usr/bin/kvm_stat
 /usr/bin/x86_energy_perf_policy
 /usr/share/man/man8/x86_energy_perf_policy.8
-/usr/lib/examples/perf/bpf/5sec.c
-/usr/lib/examples/perf/bpf/empty.c
-/usr/lib/include/perf/bpf/bpf.h
 /usr/share/perf-core/strace/groups/file
+/usr/lib/perf/examples/bpf/5sec.c
+/usr/lib/perf/examples/bpf/augmented_syscalls.c
+/usr/lib/perf/examples/bpf/empty.c
+/usr/lib/perf/examples/bpf/hello.c
+/usr/lib/perf/examples/bpf/sys_enter_openat.c
+/usr/lib/perf/include/bpf/bpf.h
+/usr/lib/perf/include/bpf/stdio.h
 
 %files hyperv
 /usr/bin/hv_fcopy_daemon
