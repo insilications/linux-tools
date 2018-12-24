@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.19
+Version:        4.20
 Release:        292
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.20.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -53,7 +53,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.19
+%setup -q -n linux-4.20
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -155,6 +155,9 @@ chmod 0644 %{buildroot}/usr/share/man/man8/*
 /usr/lib/perf/examples/bpf/sys_enter_openat.c
 /usr/lib/perf/include/bpf/bpf.h
 /usr/lib/perf/include/bpf/stdio.h
+/usr/lib/perf/examples/bpf/augmented_raw_syscalls.c
+/usr/lib/perf/examples/bpf/etcsnoop.c
+/usr/lib/perf/include/bpf/linux/socket.h
 
 %files hyperv
 /usr/bin/hv_fcopy_daemon
