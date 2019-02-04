@@ -1,6 +1,6 @@
 Name:           linux-tools
 Version:        4.20
-Release:        306
+Release:        307
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
