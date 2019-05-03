@@ -1,20 +1,5 @@
---- linux-4.16.11/tools/perf/Makefile.perf~	2018-05-22 16:56:31.000000000 +0000
-+++ linux-4.16.11/tools/perf/Makefile.perf	2018-05-31 05:49:58.996667650 +0000
-@@ -597,12 +597,12 @@
- 
- ifndef NO_PERF_READ_VDSO32
- $(OUTPUT)perf-read-vdso32: perf-read-vdso.c util/find-vdso-map.c
--	$(QUIET_CC)$(CC) -m32 $(filter -static,$(LDFLAGS)) -Wall -Werror -o $@ perf-read-vdso.c
-+	$(QUIET_CC)$(CC) -m32 $(filter -static,$(LDFLAGS)) -Wall -o $@ perf-read-vdso.c
- endif
- 
- ifndef NO_PERF_READ_VDSOX32
- $(OUTPUT)perf-read-vdsox32: perf-read-vdso.c util/find-vdso-map.c
--	$(QUIET_CC)$(CC) -mx32 $(filter -static,$(LDFLAGS)) -Wall -Werror -o $@ perf-read-vdso.c
-+	$(QUIET_CC)$(CC) -mx32 $(filter -static,$(LDFLAGS)) -Wall -o $@ perf-read-vdso.c
- endif
- 
- ifndef NO_JVMTI
+-Werror is for werrorrists
+
 --- linux-4.16.11/tools/perf/Makefile.config~	2018-05-22 16:56:31.000000000 +0000
 +++ linux-4.16.11/tools/perf/Makefile.config	2018-05-31 05:50:14.503669055 +0000
 @@ -160,11 +160,6 @@

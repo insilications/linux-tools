@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        4.20
+Version:        5.0
 Release:        331
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.20.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -53,7 +53,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-4.20
+%setup -q -n linux-5.0
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1

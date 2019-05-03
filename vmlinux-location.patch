@@ -1,6 +1,6 @@
---- linux-4.14/tools/perf/util/symbol.c.org	2018-02-11 17:28:38.561109239 +0000
-+++ linux-4.14/tools/perf/util/symbol.c	2018-02-11 17:31:11.992208830 +0000
-@@ -1979,6 +1979,7 @@
+--- linux-5.0/tools/perf/util/symbol.c~	2019-03-03 23:21:29.000000000 +0000
++++ linux-5.0/tools/perf/util/symbol.c	2019-05-03 14:00:26.794360195 +0000
+@@ -1988,6 +1988,7 @@
  
  static const char * const vmlinux_paths_upd[] = {
  	"/boot/vmlinux-%s",
