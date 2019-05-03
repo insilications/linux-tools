@@ -158,6 +158,8 @@ chmod 0644 %{buildroot}/usr/share/man/man8/*
 /usr/lib/perf/examples/bpf/augmented_raw_syscalls.c
 /usr/lib/perf/examples/bpf/etcsnoop.c
 /usr/lib/perf/include/bpf/linux/socket.h
+/usr/lib/perf/include/bpf/pid_filter.h
+/usr/lib/perf/include/bpf/unistd.h
 
 %files hyperv
 /usr/bin/hv_fcopy_daemon
