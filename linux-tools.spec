@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        5.0
+Version:        5.1
 Release:        341
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.0.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
 
 BuildRequires:  bash
 BuildRequires:  bc
@@ -53,7 +53,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-5.0
+%setup -q -n linux-5.1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
