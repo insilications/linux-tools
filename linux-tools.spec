@@ -1,11 +1,13 @@
 Name:           linux-tools
 Version:        5.1
-Release:        362
+Release:        363
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
 Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
+
+Requires: binutils
 
 BuildRequires:  bash
 BuildRequires:  bc
