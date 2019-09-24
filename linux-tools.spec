@@ -1,6 +1,6 @@
 Name:           linux-tools
 Version:        5.1
-Release:        364
+Release:        365
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
@@ -24,7 +24,6 @@ BuildRequires:  binutils-dev
 BuildRequires:  slang-dev
 BuildRequires:  libunwind-dev
 BuildRequires:  libunwind-dev32
-BuildRequires:  python-dev
 BuildRequires:  zlib-dev
 BuildRequires:  xz-dev
 BuildRequires:  numactl-dev
