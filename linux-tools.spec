@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        5.1
+Version:        5.3
 Release:        365
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.1.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.3.tar.xz
 
 Requires: binutils
 
@@ -54,7 +54,7 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-5.1
+%setup -q -n linux-5.3
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -149,6 +149,7 @@ chmod 0644 %{buildroot}/usr/share/man/man8/*
 /usr/bin/x86_energy_perf_policy
 /usr/share/man/man8/x86_energy_perf_policy.8
 /usr/share/perf-core/strace/groups/file
+/usr/share/perf-core/strace/groups/string
 /usr/lib/perf/examples/bpf/5sec.c
 /usr/lib/perf/examples/bpf/augmented_syscalls.c
 /usr/lib/perf/examples/bpf/empty.c
