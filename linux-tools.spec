@@ -72,6 +72,9 @@ BuildTools() {
     pushd tools/power/x86/turbostat
     make
     popd
+    pushd tools/power/x86/intel-speed-select
+    make
+    popd
     pushd tools/power/x86/x86_energy_perf_policy
     make
     popd
@@ -97,6 +100,9 @@ InstallTools() {
 	popd
     popd
     pushd tools/power/x86/turbostat
+    %make_install prefix=/usr
+    popd
+    pushd tools/power/x86/intel-speed-select
     %make_install prefix=/usr
     popd
     pushd tools/kvm/kvm_stat
@@ -132,6 +138,7 @@ chmod 0644 %{buildroot}/usr/share/man/man8/*
 %files
 /usr/bin/trace
 /usr/bin/perf
+/usr/bin/intel-speed-select
 /usr/libexec/perf-core
 /usr/lib64/traceevent/plugins/
 /usr/share/bash-completion/completions/*
