@@ -1,6 +1,6 @@
 Name:           linux-tools
 Version:        5.3
-Release:        377
+Release:        378
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
@@ -40,7 +40,7 @@ BuildRequires:  babeltrace-dev
 
 Patch1: turbostat.patch
 Patch2: vmlinux-location.patch
-Patch3: werror.patch
+Patch3: 0001-Filter-out-link-time-optimization.patch
 
 %description
 The Linux kernel tools perf/trace.
@@ -66,8 +66,7 @@ export NM=gcc-nm
 unset LD_AS_NEEDED
 BuildTools() {
     pushd tools/perf
-    sed -i '/# Define NO_GTK2/a NO_GTK2 = 1' Makefile.perf
-    make -s %{?sparse_mflags}
+    make -s NO_GTK2=1 WERROR=0 %{?sparse_mflags}
     popd
     pushd tools/power/x86/turbostat
     make
