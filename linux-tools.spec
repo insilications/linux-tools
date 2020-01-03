@@ -12,6 +12,7 @@ Requires: binutils
 BuildRequires:  bash
 BuildRequires:  bc
 BuildRequires:  binutils-dev
+BuildRequires:  binutils-staticdev
 BuildRequires:  elfutils
 BuildRequires:  elfutils-dev
 BuildRequires:  kmod
@@ -20,7 +21,6 @@ BuildRequires:  openssl
 BuildRequires:  openssl-dev
 BuildRequires:  flex bison
 BuildRequires:  ncurses-dev
-BuildRequires:  binutils-dev
 BuildRequires:  slang-dev
 BuildRequires:  libunwind-dev
 BuildRequires:  libunwind-dev32
