@@ -69,6 +69,7 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -I/usr/include/python3.8/"
 
 unset LD_AS_NEEDED
 BuildTools() {
@@ -96,13 +97,15 @@ BuildTools
 BuildHyperVDaemons
 
 %install
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -I/usr/include/python3.8/"
 
 InstallTools() {
     pushd tools/perf
     %make_install prefix=/usr
 	pushd Documentation
 	make man
-	make DESTDIR=%{buildroot} mandir=/usr/share/man install
+	make DESTDIR=%{buildroot} mandir=/usr/share/man PYTHON=/usr/bin/python3 PYTHON_CONFIG=/usr/bin/python3-config install
 	popd
     popd
     pushd tools/power/x86/turbostat
