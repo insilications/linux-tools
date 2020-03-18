@@ -104,10 +104,10 @@ export CFLAGS="$CFLAGS -I/usr/include/python3.8/"
 
 InstallTools() {
     pushd tools/perf
-    %make_install prefix=/usr
+    %make_install prefix=/usr WERROR=0 DESTDIR=%{buildroot} mandir=/usr/share/man PYTHON=/usr/bin/python3 PYTHON_CONFIG=/usr/bin/python3-config  
 	pushd Documentation
-	make man
-	make DESTDIR=%{buildroot} mandir=/usr/share/man PYTHON=/usr/bin/python3 PYTHON_CONFIG=/usr/bin/python3-config install
+	make man WERROR=0 DESTDIR=%{buildroot} mandir=/usr/share/man PYTHON=/usr/bin/python3 PYTHON_CONFIG=/usr/bin/python3-config 
+	make WERROR=0 DESTDIR=%{buildroot} mandir=/usr/share/man PYTHON=/usr/bin/python3 PYTHON_CONFIG=/usr/bin/python3-config install
 	popd
     popd
     pushd tools/power/x86/turbostat
