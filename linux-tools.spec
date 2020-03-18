@@ -35,8 +35,11 @@ BuildRequires:  libxml2-dev
 BuildRequires:  libxslt
 BuildRequires:  docbook-xml
 BuildRequires:  audit-dev
-BuildRequires:  python3-dev
+BuildRequires:  python3-dev python3-staticdev
+BuildRequires:  python3
 BuildRequires:  babeltrace-dev
+BuildRequires:  zstd-dev
+BuildRequires:  libcap-dev
 
 Patch1: turbostat.patch
 Patch2: vmlinux-location.patch
@@ -65,10 +68,12 @@ Linux kernel hyperv daemon files
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
+export GCC_IGNORE_WERROR=1
+
 unset LD_AS_NEEDED
 BuildTools() {
     pushd tools/perf
-    make -s NO_GTK2=1 WERROR=0 %{?sparse_mflags}
+    make V=1 NO_GTK2=1 WERROR=0 PYTHON=/usr/bin/python3 PYTHON_CONFIG=/usr/bin/python3-config %{?sparse_mflags}
     popd
     pushd tools/power/x86/turbostat
     make
