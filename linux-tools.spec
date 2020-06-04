@@ -1,11 +1,11 @@
 Name:           linux-tools
-Version:        5.5
-Release:        420
+Version:        5.6
+Release:        421
 License:        GPL-2.0
 Summary:        The Linux kernel tools (perf)
 Url:            http://www.kernel.org/
 Group:          kernel
-Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.tar.xz
+Source0:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz
 
 Requires: binutils
 
@@ -44,8 +44,7 @@ BuildRequires:  libcap-dev
 Patch1: turbostat.patch
 Patch2: vmlinux-location.patch
 Patch3: 0001-Filter-out-link-time-optimization.patch
-Patch4: binutils-fix.patch
-Patch5: 0001-Make-python-config-call-python3.8-compatable.patch
+Patch4: 0001-Make-python-config-call-python3.8-compatable.patch
 
 %description
 The Linux kernel tools perf/trace.
@@ -59,12 +58,11 @@ Group:          kernel
 Linux kernel hyperv daemon files
 
 %prep
-%setup -q -n linux-5.5
+%setup -q -n linux-5.6
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 export AR=gcc-ar
