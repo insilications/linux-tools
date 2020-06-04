@@ -71,7 +71,7 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -I/usr/include/python3.8/"
+export CFLAGS="$CFLAGS -I/usr/include/python3.8/ -fcommon"
 
 unset LD_AS_NEEDED
 BuildTools() {
