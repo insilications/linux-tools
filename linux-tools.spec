@@ -69,7 +69,10 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -I/usr/include/python3.8/ -fcommon"
+export CFLAGS="-g1 -O3 -Wl,-z -Wl,now -Wl,-z -Wl,relro -Wl,-z,max-page-size=0x1000 -march=native -mtune=native -fgraphite-identity -O3 -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -pipe -I/usr/include/python3.8/ -fcommon"
+export CXXFLAGS="-g1 -O3  -Wl,-z,max-page-size=0x1000 -march=native -mtune=native -fgraphite-identity -O3 -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -pipe -I/usr/include/python3.8/ -fcommon"
+export LDFLAGS="-g1 -O3 -Wl,-z -Wl,now -Wl,-z -Wl,relro -Wl,-z,max-page-size=0x1000 -march=native -mtune=native -fgraphite-identity -O3 -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -pipe -I/usr/include/python3.8/ -fcommon"
+export FFLAGS="$CFLAGS"
 
 unset LD_AS_NEEDED
 BuildTools() {
@@ -98,7 +101,10 @@ BuildHyperVDaemons
 
 %install
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -I/usr/include/python3.8/"
+export CFLAGS="-g1 -O3 -Wl,-z -Wl,now -Wl,-z -Wl,relro -Wl,-z,max-page-size=0x1000 -march=native -mtune=native -fgraphite-identity -O3 -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -pipe -I/usr/include/python3.8/ -fcommon"
+export CXXFLAGS="-g1 -O3  -Wl,-z,max-page-size=0x1000 -march=native -mtune=native -fgraphite-identity -O3 -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -pipe -I/usr/include/python3.8/ -fcommon"
+export LDFLAGS="-g1 -O3 -Wl,-z -Wl,now -Wl,-z -Wl,relro -Wl,-z,max-page-size=0x1000 -march=native -mtune=native -fgraphite-identity -O3 -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -pipe -I/usr/include/python3.8/ -fcommon"
+export FFLAGS="$CFLAGS"
 
 InstallTools() {
     pushd tools/perf
